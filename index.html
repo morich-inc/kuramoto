@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>倉本忠興  様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>倉本忠興  様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社イマクリエ</a>
+  <a href="#k2">2. 株式会社ONODERA USER RUN</a>
+  <a href="#k3">3. INTLOOP株式会社</a>
+  <a href="#k4">4. 株式会社テクノプロ　コンサルティング・パートナーズ社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">打診</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社イマクリエ</div>
+  <div class="co-url"><a href="https://www.imacrea.co.jp/" target="_blank">https://www.imacrea.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒106-0044 東京都港区東麻布2-3-5 第一ビル2F</td></tr><tr><th>設立</th><td>2007年7月</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">株式会社イマクリエは、2007年7月に設立され、テレワークを活用したアウトソーシング事業およびコンサルティング事業を展開する企業です。「住む場所やライフステージに縛られず、一人ひとりがいきいきと働ける社会」の実現を目指しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>株式会社イマクリエは、2007年7月に設立され、テレワークを活用したアウトソーシング事業およびコンサルティング事業を展開する企業です。「住む場所やライフステージに縛られず、一人ひとりがいきいきと働ける社会」の実現を目指し、現在では日本国内44都道府県、世界40か国以上に在住する5,000名以上のテレワーカーと共に事業を推進しています。</p><p>東日本大震災を契機に「家で仕事ができるテレワーク」の重要性を実感し、社員全員がフルリモートで働く「完全テレワーク型」の事業モデルを確立。2016年には正式に全員フルリモート勤務へ移行し、テレワークに関する豊富なノウハウを蓄積してきました。この知見を活かし、企業向けのテレワーク導入支援だけでなく、自治体と連携した地方創生支援事業にも注力しています。</p><p>同社の事業は、企業の業務効率化を支援するBPO（ビジネス・プロセス・アウトソーシング）を中心に、地方自治体向けのプロモーション支援や雇用創出・企業誘致など多岐にわたります。都市部の企業と地方自治体をつなぎ、地方に眠る資産の活用を促進することで、地域経済の活性化にも貢献しています。</p><p>その取り組みが評価され、2022年度には「地方創生テレワークアワード（地方創生担当大臣賞）」および「テレワーク先駆者百選 総務大臣賞」をダブル受賞しました。今後も、テレワークを活用した新たな働き方を推進し、社会の発展に寄与していきます。</p><p><strong>代表取締役　鈴木信吾氏</strong><br>1978年生まれ。2002年に青山学院大学経営学部を卒業後、大手住宅メーカーに就職。その後、大手自動車部品メーカーを経て、コンサルティング会社にてクライアントの経営戦略立案などを担当。2007年に友人4人とともに株式会社イマクリエを創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 打診</div>
+          <div class="job-preview">詳細未公開ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>業務内容、応募資格、求める人物像などの詳細は未公開です。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 フルリモート可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.imacrea.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/1ICDK3Cv369NHsmnc_TloI9Lk3mE8D8nf/view?usp=sharing" target="_blank">📄 会社資料</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">役員候補</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社ONODERA USER RUN</div>
+  <div class="co-url"><a href="https://onodera-user-run.co.jp/" target="_blank">https://onodera-user-run.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区大手町1-1-3大手センタービル５階</td></tr><tr><th>設立</th><td>2016年11月</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>LEOC社の給食事業が祖業</li><li>非上場でありながら、100株式を保有</li><li>横浜FC経営権を持ち</li><li>Food creationsをアサヒから買収</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2016年11月設立。海外人材を日本国内に紹介する事業を展開しています。最大の強みは、アジア８カ国に独自の日本語学校を設置し、学生の選抜から教育までを一貫して自社で行っている点です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2016年11月設立。海外人材を日本国内に紹介する事業を展開しています。最大の強みは、アジア８カ国に独自の日本語学校を設置し、学生の選抜から教育までを一貫して自社で行っている点です。これにより、単なる紹介にとどまらず、企業に「顔が見える人材」を提供できるという明確な優位性を築いています。</p><p>主に扱うのは「特定技能」の領域で、これまでに約5,500人の特定技能外国人材を日本に紹介しています。主要な就業分野は、介護施設や医療機関を中心とした医療・介護領域、および外食産業です。また、紹介後の生活支援やビザ（在留資格）の更新業務も担っており、支援機関としての役割を果たしています。さらに、ビザ申請業務の迅速化を目的に、グループ内で行政書士法人を設立し、申請業務の内製化を図るなど、事業基盤の強化にも取り組んでいます。</p><p>2025年60億売上約6000名の入国受け入れを行っています。現在は上場を見据え、仕組みや内部体制はすでに整備されつつあります。各国情勢の影響を受ける部分はあるものの、人材を安定的に供給できる体制は確立されています。一方で、さらなる売上拡大を実現するために、国内での営業開拓の強化が喫緊の課題となっています。</p><p><strong>親会社情報</strong><br>株式会社ONODERA GROUP（旧：ONODERAホールディングス）は、食・人財・医療・スポーツ等の多領域でグローバルに事業展開する総合企業グループ。1983年の創業以来、「喜びと感動」「成長と幸福」「社会貢献」を理念に国内外で事業を拡大しています。</p><ul><li>本社所在地：東京都千代田区大手町1-1-3 大手センタービル16階</li><li>代表者：グループ代表CEO 小野寺裕司／グループCOO 田島利行</li><li>創業：1983年4月1日</li><li>グループ会社数：31社（2025年4月1日現在）</li><li>グループ社員数：29,638名（正社員12,481名、パート・サプラー17,157名）</li><li>グループ売上高：1,559億円（2025年3月期）</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 役員候補</div>
+          <div class="job-preview">国内市場開拓の営業戦略を牽引する戦略的役割</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容：</strong><br>上場を達成するため、最大のボトルネックとなっているのが国内マーケットの開拓です。本ポジションには、国内市場における営業戦略を強力に推進し、売上最大化を実現する戦略的役割を担っていただくことを期待しています。特に、新規顧客の獲得戦略の立案、営業組織の仕組みづくり、そしてその実行・統括を通じて、再現性のある成果モデルを構築することが重要なミッションです。</p><p><strong>応募資格：</strong></p><ul><li><span class='tag tag-must'>MUST</span> 国内の人材派遣事業に特化した営業経験</li><li><span class='tag tag-must'>MUST</span> トップセールスやマネジメントにおいて確かな実績を残されてきた方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 基本出社</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://onodera-user-run.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">M&A戦略・事業企画</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">INTLOOP株式会社</div>
+  <div class="co-url"><a href="https://www.intloop.com/" target="_blank">https://www.intloop.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒107-0052　東京都港区赤坂2-4-6　赤坂グリーンクロス27階</td></tr><tr><th>設立</th><td>2005年</td></tr><tr><th>従業員数</th><td>連結社員数1,508名、フリーランス登録者数約55,000名</td></tr><tr><th>売上高</th><td>335億5,100万円（2025年7月期）</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>★社長リレーション</li><li>★カジュアル面談スタート可</li><li>★過去複数名入社実績アリ</li><li>急成長フェーズのど真ん中で、会社づくりに関われる</li><li>コンサルにとどまらない、事業領域の広さと将来性</li><li>大手連携とオープンイノベーションで、社会課題解決に挑める</li><li>専門性を高めながら、長く働きやすい環境が整っている</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">INTLOOPは「事業創造型コンサルティングファーム」として、2022年7月8日に東証グロース市場に上場し、フリーランス×自社社員のハイブリッド型チームによる経営課題解決の支援を中心に事業を展開しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>INTLOOPは「事業創造型コンサルティングファーム」として、2022年7月8日に東証グロース市場に上場し、フリーランス×自社社員のハイブリッド型チームによる経営課題解決の支援を中心に、事業戦略・業務改革コンサルティング、ITコンサルティング、プロジェクトマネジメント支援、プロコンサル派遣・人材紹介、新規事業開発・営業推進支援まで幅広く展開。</p><p>直近10期の年平均成長率（CAGR）は47.2％と非常に好調で、2025年7月期の連結売上高は335億5,100万円、連結社員数は1,508名、フリーランス登録者数は約55,000名。社員とフリーランスのハイブリッド体制を強みに、コンサルティングと人材支援を一体で提供できる点が大きな特徴です。</p><p>2025年にはINTLOOP Project Management株式会社を立ち上げ、PMO事業本部を独立・子会社化。PM人材不足支援、PMO実行支援、先端技術の導入・活用支援を通じて、企業の変革推進を担っています。</p><p>グループ全体で2030年7月期に売上高1,000億円・営業利益150億円を目指す成長ビジョンを掲げており、創業20年を迎えた2025年2月、同社は東京本社を赤坂グリーンクロス27階の最上階に移転し、まさに成長の証として新たなステージへと歩みを進めています。</p><p><strong>代表取締役　林 博文氏</strong><br>同志社大学法学部法律学科卒業後、アンダーセンコンサルティング（現アクセンチュア）に入社。スタートアップ企業を経て再度アクセンチュアに戻り、32歳で独立してINTLOOPを創業。フリーランスコンサルタントの活躍の場を増やしたいという想いから事業をスタートし、持続的な成長を実現。49歳での東証グロース上場まで、「つながり」を大切にした経営で会社を発展させ続けています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 M&A戦略・事業企画（グループ会社/投資先）</div>
+          <div class="job-preview">M&A戦略立案から実行まで全プロセスに携わる戦略ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>職務詳細</strong></p><ul><li>事業本部における経営企画・戦略策定</li><li>M&A推進(ターゲット選定、アプローチ、クロージング、PMI等)</li><li>中長期事業計画／予算の策定、事業戦略の立案</li><li>予実管理、事業全体のKPIの分析</li><li>経営上の課題抽出と対応策に関する各種提言</li><li>競合等の市場調査</li></ul><p><strong>募集背景</strong><br>現在、当社では重要な成長戦略としてM&Aを位置づけており、さらなる加速を目指しています。そのため、企業分析や経営戦略に関する一定の知識と経験を持つ人材をお迎えし、M&Aに係る全体戦略立案から投資検討、DD、条件交渉、エグゼキューション、PMIまで一貫して携わっていただける体制を強化したいと考えています。</p><p><strong>求人のポイント</strong><br>外資系投資銀行出身のファイナンス・M&A責任者のもと、M&Aの戦略立案から実行まで全プロセスに携わります。外部コンサルタントや専門家と連携しながら、多数の案件に関与し、専門知識や分析スキルを磨くことができます。上場会社の経営戦略やファイナンス全般に関わることで、幅広い経験を積み、キャリアアップが可能。代表や取締役への直接説明の機会も多く、意思決定のスピードが早い環境で、戦略策定から実行まで一貫して経験できます。</p><p><strong>チーム構成</strong></p><ul><li>シニアディレクター（ファイナンス・M&A責任者）1名</li><li>ディレクター1名</li><li>マネジャー1名</li><li>コンサルタント1名</li></ul><p><strong>必須スキル・経験</strong><br>下記どちらかの経験がある方</p><ul><li><span class='tag tag-must'>MUST</span> 戦略、経営コンサルティングに関する実務経験3年以上</li><li><span class='tag tag-must'>MUST</span> 事業会社での経営企画の実務経験3年以上</li></ul><p><strong>歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> データアナリティクスの知見を活かした業務経験</li><li><span class='tag tag-want'>WANT</span> ビジネスデューデリジェンス（DD）やM&Aに関連する業務経験</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.intloop.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">事業企画室長</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社テクノプロ　コンサルティング・パートナーズ社</div>
+  <div class="co-url"><a href="https://www.technopro.com/cp/" target="_blank">https://www.technopro.com/cp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒106-6135 東京都港区六本木6-10-1 六本木ヒルズ森タワー35階</td></tr><tr><th>グループ売上</th><td>約2,400億円</td></tr><tr><th>グループエンジニア数</th><td>約3万人（国内2万8,000名）</td></tr><tr><th>新カンパニー規模</th><td>エンジニア約2,000名、売上200数十億円</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <p>圧倒的なエンジニア基盤と巨大な資金力を武器に、3年間で「時価総額1兆円＆再上場」を目指す、極めてダイナミックな変革フェーズです！すでに売上200数十億円・2,000名規模の組織基盤がありながら、中身をゼロから自分たちの手で作り上げていく「大人のベンチャー」のようなエキサイティングな環境で、あなたの経験をフルに発揮してみませんか？ストックオプションによる大きなアップサイドも狙える、今しか乗れない特別な船です！</p><ul><li><strong>IPOと資金調達状況：</strong>ブラックストーンの強固な資金力を背景に、AI・デジタル領域へ100億円超、M&Aに1,000億円超という大胆な投資を実施予定</li><li><strong>圧倒的な裁量とアップサイド：</strong>既存の200数十億円・2,000名規模の事業をベースに売上を倍の500億円規模へ急成長させるミッション</li><li><strong>大企業の基盤×ベンチャーのカオス：</strong>国内3万人のエンジニアと大手製造業を中心とする強固な顧客基盤という「揺るぎない土台」</li><li><strong>柔軟な働き方と年齢不問のフラットな環境：</strong>リモートワークとオフィスワークのハイブリッド勤務が可能</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2025年に世界最大級のPEファンド「ブラックストーン」の出資を受け非公開化し、新たな成長戦略を推進するテクノプログループ。本カンパニーは、従来のエンジニア派遣中心から「高付加価値なソリューション提供型」へビジネスモデルを変革するため、グループ内の受託開発機能を統合して新設されました。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2025年に世界最大級のPEファンド「ブラックストーン」の出資を受け非公開化し、新たな成長戦略を推進するテクノプログループ。本カンパニーは、従来のエンジニア派遣中心から「高付加価値なソリューション提供型」へビジネスモデルを変革するため、グループ内の受託開発機能を統合して新設されました。</p><p>グループ全体で売上約2,400億円、国内エンジニア数2万8,000名（海外含め約3万人）を誇り、新カンパニー単体でも既にエンジニア約2,000名、売上200数十億円の強固な基盤を持ちます。事業は「AI・データ活用」「クラウド基盤」「モノづくり」「モビリティ」の4領域です。</p><p>開発して終わりの納品完了型ではなく、運用データを戦略へ還流させ続ける「サークルモデル」を採用し、戦略立案から現場の運用・改善まで長期伴走で支援します。他社との最大の違いは、大手製造業を中心とした2,000社以上の顧客基盤と、システムだけでなく業務現場を知り尽くしたエンジニア基盤による圧倒的な「伴走力」と「対応力」です。</p><p><strong>新カンパニーの4つの事業領域：</strong></p><ul><li>モノづくり領域：製造業向けECM、SCMおよびデータマネジメントのソリューション提供</li><li>モビリティ領域：モビリティ（特にSoftware Defined Vehicle領域）のソリューション提供</li><li>AI・データ・クラウド基盤領域：クラウド・セキュリティ・ネットワーク等の基盤技術ソリューション提供</li><li>AI・データ活用領域：AI・機械学習を活用したソリューション提供</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業企画室長</div>
+          <div class="job-preview">新カンパニーの戦略立案と事業推進を担う経営幹部ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>新カンパニー設立および採用背景</strong><br>株式会社テクノプロは、2025年に世界最大級のPEファンドであるブラックストーンによる出資を経て、新たな成長戦略を推進しています。その一環として、株式会社テクノプロ内に新カンパニー「コンサルティング・パートナーズ社」を設立します。この新カンパニーは、従来のエンジニア派遣を中心としたビジネスから、ソリューション提供型のビジネスモデルへの変革を牽引する中心的な存在となります。</p><p>新カンパニーは、テクノプログループの技術力と顧客基盤を活かしながら、AI・データ活用、業務変革支援、システム構築・運用・保守・モダナイズを中心としたコンサルティング・SIの総合ソリューションを提供する予定です。</p><p><strong>主要業務内容</strong></p><ul><li>担当事業の戦略立案と推進</li><li>PL・KPIの作成と進捗管理</li><li>ソリューションの企画と推進</li><li>パートナーアライアンスの推進</li><li>事業分析とレポーティング</li></ul><p><strong>レポート先：</strong>各事業本部長</p><p><strong>必須スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> 「モノづくり」「モビリティ」「クラウド・セキュリティ基盤」「AI・データ活用」いずれかの領域における事業企画または戦略コンサルティング経験（8年以上が望ましい）</li><li><span class='tag tag-must'>MUST</span> 事業計画・KPI設計の実務経験</li><li><span class='tag tag-must'>MUST</span> 経営層へのプレゼンテーション・提案能力</li><li><span class='tag tag-must'>MUST</span> データ分析スキル（Excel、BIツール等）</li></ul><p><strong>歓迎スキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> IT企業での事業企画経験</li><li><span class='tag tag-want'>WANT</span> 戦略コンサルティングファームでの実務経験</li><li><span class='tag tag-want'>WANT</span> MBA保持者</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.technopro.com/cp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/17tP24uplEgH_eiSADNw2xfdcHj--45LK/view?usp=sharing" target="_blank">📄 会社概要資料</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが倉本忠興  様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
